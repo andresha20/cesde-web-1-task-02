@@ -100,6 +100,7 @@ const runScript = (e) => {
             let addClient = true;
             while (addClient) {
                 let userName = prompt("Nombre cliente");
+                if (!userName) return;
                 if (userName == "fin") {
                     addClient = false;
                     return false;
