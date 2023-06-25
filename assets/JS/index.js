@@ -1,16 +1,15 @@
-let useWhile = false;
+let useWhile = true;
 
 const runScript = (e) => {
     if (e.target.id == "while-button") {
-        console.log('ran')
         useWhile = !useWhile;
         let whileButton = document.getElementById("while-button");
         let whileStatus = document.getElementById("while-status");
-        whileStatus.textContent = JSON.stringify(useWhile);
+        whileStatus.textContent = useWhile ? "Activado" : "Desactivado";
         whileButton.innerHTML = useWhile ? "Desactivar" : "Activar";
         return false;
     }
-    
+    console.log('WHILE Status: ' + useWhile);
     switch (parseInt(e.target.value)) {
         case 1:
             const input = prompt("Número máximo de números naturales");
@@ -97,12 +96,13 @@ const runScript = (e) => {
                     while (acc.length < i) {
                         acc += '*';
                     }
-                    i++
+                    console.log(acc)
+                    i++;
                 }
             } else {
                 for (let i = 1; i <= num2; i++) {
                     let acc = '*';
-                    for (let i = 0; acc.length < i; i++) {
+                    for (let ii = 1; acc.length < i; ii++) {
                         acc += '*';
                     }
                     console.log(acc)
