@@ -105,106 +105,201 @@ const runScript = (e) => {
                     for (let i = 0; acc.length < i; i++) {
                         acc += '*';
                     }
-                    // while (acc.length < i) {
-                    //     acc += '*';
-                    // }
                     console.log(acc)
                 }
             }
-            
             break;
         case 9:
             let num3 = parseInt(prompt("Altura"));
-            for (let i = num3; i > 0; i--) {
-                let acc = '*';
-                while (acc.length < i) {
-                    acc += '*'
+            if (useWhile) {
+                let i = num3;
+                while (i > 0) {
+                    let acc = '*';
+                    while (acc.length < i) {
+                        acc += '*';
+                    }
+                    console.log(acc)
+                    i--
                 }
-                console.log(acc)
+            } else {
+                for (let i = num3; i > 0; i--) {
+                    let acc = '*';
+                    while (acc.length < i) {
+                        acc += '*'
+                    }
+                    console.log(acc)
+                }
             }
             break;
         case 10:
             let addClient = true;
-            while (addClient) {
-                let userName = prompt("Nombre cliente");
-                if (!userName) return;
-                if (userName == "fin") {
-                    addClient = false;
-                    return false;
+            if (useWhile) {
+                while (addClient) {
+                    let userName = prompt("Nombre cliente");
+                    if (!userName) return;
+                    if (userName == "fin") {
+                        addClient = false;
+                        return false;
+                    }
+                    let productsAmount = parseInt(prompt("Cantidad de productos"));
+                    let total = 0;
+                    let i = 1;
+                    while (i < productsAmount) {
+                        let product = parseInt(prompt("Precio unitario"))
+                        total += product;
+                        i++;
+                    }
+                    console.log(total)
                 }
-                let productsAmount = parseInt(prompt("Cantidad de productos"));
-                let total = 0;
-                for (let i = 1; i <= productsAmount; i++) {
-                    let product = parseInt(prompt("Precio unitario"))
-                    total += product;
+            } else {
+                let clientes = parseInt(prompt("Cantidad de clientes"));
+                for (let i = 1; i <= clientes; i++) {
+                    let userName = prompt("Nombre cliente");
+                    if (!userName) return;
+                    if (userName == "fin") {
+                        addClient = false;
+                        return false;
+                    }
+                    let productsAmount = parseInt(prompt("Cantidad de productos"));
+                    let total = 0;
+                    let i = 1;
+                    for (let i = 1; i <= productsAmount; i++) {
+                        let product = parseInt(prompt("Precio unitario"))
+                        total += product;
+                    }
+                    console.log(total)
                 }
-                console.log(total)
             }
             break;
         case 11:
             let studentsNumber = parseInt(prompt("Número de estudiantes"));
-            for (let i = 1; i <= studentsNumber; i++) {
-                let name = prompt("Nombre del estudiante");
-                let materia = prompt("Materia");
-                let acc7 = 0;
-                let totalNotes = 3;
-                for (let i = 1; i <= totalNotes; i++) {
-                    let nota = parseInt(prompt);
-                    acc7 += nota;
+            if (useWhile) {
+                let i = 1;
+                while (i <= studentsNumber) {
+                    let name = prompt("Nombre del estudiante");
+                    let materia = prompt("Materia");
+                    let acc7 = 0;
+                    let totalNotes = 3;
+                    let i2 = 1;
+                    while (i2 <= totalNotes) {
+                        let nota = parseInt(prompt);
+                        acc7 += nota;
+                        i2++;
+                    }
+                    let average = (acc7/totalNotes).toFixed(2);
+                    console.log(`El estudiante ${name} de la materia ${materia} tiene un promedio de ${average}`)
+                    i++;
                 }
-                let average = (acc7/totalNotes).toFixed(2);
-                console.log(`El estudiante ${name} de la materia ${materia} tiene un promedio de ${average}`)
+            } else {
+                for (let i = 1; i <= studentsNumber; i++) {
+                    let name = prompt("Nombre del estudiante");
+                    let materia = prompt("Materia");
+                    let acc7 = 0;
+                    let totalNotes = 3;
+                    for (let i = 1; i <= totalNotes; i++) {
+                        let nota = parseInt(prompt);
+                        acc7 += nota;
+                    }
+                    let average = (acc7/totalNotes).toFixed(2);
+                    console.log(`El estudiante ${name} de la materia ${materia} tiene un promedio de ${average}`)
+                }
             }
             break;
         case 12:
             let table = document.createElement("table");
             table.setAttribute("style", "border-collapse:collapse;");
             table.setAttribute("border", "1");
-
             let tbody = document.createElement("tbody");
             table.appendChild(tbody);
             let targetDiv = document.getElementById("#12");
             targetDiv.innerHTML = "" 
             targetDiv.setAttribute("style", "margin-top: 10px");
             targetDiv.appendChild(table);
-            for (let i = 1; i <= 3; i++) {
-                let tr = document.createElement("tr");
-                tbody.appendChild(tr);
-                let lastIndex = i * 5;
-                for (let i = lastIndex - 5 + 1; i <= lastIndex; i++) {
-                    let td = document.createElement("td");
-                    td.innerHTML = i;
-                    tr.appendChild(td);
+            if (useWhile) {
+                let i = 0;
+                while (i <= 3) {
+                    let tr = document.createElement("tr");
+                    tbody.appendChild(tr);
+                    let lastIndex = i * 5;
+                    let i = lastIndex - 5 + 1;
+                    while (i <= lastIndex) {
+                        let td = document.createElement("td");
+                        td.innerHTML = i;
+                        tr.appendChild(td);
+                    }
+                    i++;
+                }
+            } else {
+                for (let i = 1; i <= 3; i++) {
+                    let tr = document.createElement("tr");
+                    tbody.appendChild(tr);
+                    let lastIndex = i * 5;
+                    for (let i = lastIndex - 5 + 1; i <= lastIndex; i++) {
+                        let td = document.createElement("td");
+                        td.innerHTML = i;
+                        tr.appendChild(td);
+                    }
                 }
             }
             break;
         case 13:
             let underage = 0;
             let adult = 0;
-            for (let i = 1; i <= 10; i++) {
-                let edad = parseInt(prompt(`Edad estudiante ${i}`))
-                if (edad >= 18) {
-                    adult += 1;
-                } else {
-                    underage += 1;
+            if (useWhile) {
+                let i = 1;
+                while (i <= 10) {
+                    let edad = parseInt(prompt(`Edad estudiante ${i}`));
+                    if (edad >= 18) {
+                        adult += 1;
+                    } else {
+                        underage += 1;
+                    }
+                    i++;
                 }
+                console.log(`Hay ${underage} estudiantes menores de edad y ${adult} estudiantes mayores de edad.`);
+            } else {
+                for (let i = 1; i <= 10; i++) {
+                    let edad = parseInt(prompt(`Edad estudiante ${i}`));
+                    if (edad >= 18) {
+                        adult += 1;
+                    } else {
+                        underage += 1;
+                    }
+                }
+                console.log(`Hay ${underage} estudiantes menores de edad y ${adult} estudiantes mayores de edad.`);
             }
-            console.log(`Hay ${underage} estudiantes menores de edad y ${adult} estudiantes mayores de edad.`)
             break;
         case 14:
             let quit = false;
-            for (let i = 1; i <= 3; i++) {
-                if (quit) return false;
-                let randomNumber = Math.floor(Math.random() * 10) + 1;
-                let userNumber = parseInt(prompt("Ingresa un número de 1 a 10"));
-                console.log(randomNumber, userNumber)
-                if (randomNumber == userNumber) {
-                    console.log(`Number ${userNumber} matches!`)
-                    quit = true;
-                    break;
-                } else {
-                    console.log(`Number ${userNumber} doesn't match. Try again!`)
-
+            if (useWhile) {
+                let i = 1;
+                while (i <= 3 && !quit) {
+                    if (quit) return false;
+                    let randomNumber = Math.floor(Math.random() * 10) + 1;
+                    let userNumber = parseInt(prompt("Ingresa un número de 1 a 10"));
+                    console.log(randomNumber, userNumber)
+                    if (randomNumber == userNumber) {
+                        console.log(`Number ${userNumber} matches!`)
+                        quit = true;
+                        break;
+                    } else {
+                        console.log(`Number ${userNumber} doesn't match. Try again!`)
+                    }
+                    i++;                               
+                }
+            } else {
+                for (let i = 1; i <= 3; i++) {
+                    if (quit) return false;
+                    let randomNumber = Math.floor(Math.random() * 10) + 1;
+                    let userNumber = parseInt(prompt("Ingresa un número de 1 a 10"));
+                    console.log(randomNumber, userNumber)
+                    if (randomNumber == userNumber) {
+                        console.log(`Number ${userNumber} matches!`)
+                        quit = true;
+                        break;
+                    } else {
+                        console.log(`Number ${userNumber} doesn't match. Try again!`)
+                    }
                 }
             }
             break;
