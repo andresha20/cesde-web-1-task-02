@@ -222,11 +222,12 @@ const runScript = (e) => {
                     let tr = document.createElement("tr");
                     tbody.appendChild(tr);
                     let lastIndex = i * 5;
-                    let i = lastIndex - 5 + 1;
-                    while (i <= lastIndex) {
+                    let i2 = lastIndex - 5 + 1;
+                    while (i2 > 0 && i2 <= lastIndex) {
                         let td = document.createElement("td");
-                        td.innerHTML = i;
+                        td.innerHTML = i2;
                         tr.appendChild(td);
+                        i2++;
                     }
                     i++;
                 }
@@ -249,7 +250,7 @@ const runScript = (e) => {
             if (useWhile) {
                 let i = 1;
                 while (i <= 10) {
-                    let edad = parseInt(prompt(`Edad estudiante ${i}`));
+                    let edad = Math.floor(Math.random() * 40) + 1;
                     if (edad >= 18) {
                         adult += 1;
                     } else {
@@ -260,7 +261,7 @@ const runScript = (e) => {
                 console.log(`Hay ${underage} estudiantes menores de edad y ${adult} estudiantes mayores de edad.`);
             } else {
                 for (let i = 1; i <= 10; i++) {
-                    let edad = parseInt(prompt(`Edad estudiante ${i}`));
+                    let edad = Math.floor(Math.random() * 40) + 1;
                     if (edad >= 18) {
                         adult += 1;
                     } else {
@@ -275,7 +276,6 @@ const runScript = (e) => {
             if (useWhile) {
                 let i = 1;
                 while (i <= 3 && !quit) {
-                    if (quit) return false;
                     let randomNumber = Math.floor(Math.random() * 10) + 1;
                     let userNumber = parseInt(prompt("Ingresa un número de 1 a 10"));
                     console.log(randomNumber, userNumber)
