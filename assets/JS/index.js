@@ -7,6 +7,7 @@ const runScript = (e) => {
         let whileStatus = document.getElementById("while-status");
         whileStatus.textContent = useWhile ? "Activado" : "Desactivado";
         whileButton.innerHTML = useWhile ? "Desactivar" : "Activar";
+        console.log('WHILE Status: ' + useWhile);
         return false;
     }
     console.log('WHILE Status: ' + useWhile);
@@ -144,7 +145,7 @@ const runScript = (e) => {
                     let productsAmount = parseInt(prompt("Cantidad de productos"));
                     let total = 0;
                     let i = 1;
-                    while (i < productsAmount) {
+                    while (i <= productsAmount) {
                         let product = parseInt(prompt("Precio unitario"))
                         total += product;
                         i++;
@@ -182,7 +183,7 @@ const runScript = (e) => {
                     let totalNotes = 3;
                     let i2 = 1;
                     while (i2 <= totalNotes) {
-                        let nota = parseInt(prompt);
+                        let nota = parseInt(prompt(`Nota ${i2}`));
                         acc7 += nota;
                         i2++;
                     }
@@ -197,7 +198,7 @@ const runScript = (e) => {
                     let acc7 = 0;
                     let totalNotes = 3;
                     for (let i = 1; i <= totalNotes; i++) {
-                        let nota = parseInt(prompt);
+                        let nota = parseInt(prompt(`Nota ${i}`));
                         acc7 += nota;
                     }
                     let average = (acc7/totalNotes).toFixed(2);
