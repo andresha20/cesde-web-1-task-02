@@ -5,8 +5,8 @@ const runScript = (e) => {
         useWhile = !useWhile;
         let whileButton = document.getElementById("while-button");
         let whileStatus = document.getElementById("while-status");
-        whileStatus.textContent = useWhile ? "Activado" : "Desactivado";
-        whileButton.innerHTML = useWhile ? "Desactivar" : "Activar";
+        whileStatus.textContent = useWhile ? "Enabled" : "Disabled";
+        whileButton.innerHTML = useWhile ? "Disable" : "Enable";
         console.log('WHILE Status: ' + useWhile);
         return false;
     }
